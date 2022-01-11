@@ -44,6 +44,8 @@ import tabbercontrol from "@/components/content/tabbercontrol/tabbercontrol.vue"
 import goods from "@/components/content/goods/goods.vue";
 import scroll from "@/components/common/scroll/scroll.vue";
 import back from "@/components/common/back/backtop.vue";
+import bus from "@/assets/bus.js";
+import {debounce} from "@/common/utils.js"
 export default {
   name: "home",
   data() {
@@ -71,6 +73,12 @@ export default {
     scroll,
     back,
   },
+  mounted () {
+  bus.$on("refresh",()=>{
+    debounce(this.$refs.scroll.refresh(),100000)
+    console.log("hahaha")
+  })
+ },
   methods: {
     backtop() {
       this.$refs.scroll.scroll.scrollTo(0, 0, 500);
@@ -140,7 +148,7 @@ export default {
   height: 100vh;
 }
 .home-nav {
-  background-color: deeppink;
+  background-color: var(--color-tint);
   color: white;
 }
 .wrap {

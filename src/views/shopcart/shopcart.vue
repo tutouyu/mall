@@ -39,7 +39,7 @@ export default {
   }
 
   .nav-bar {
-    background-color: var(--color-tint);
+    background-color:  var(--color-tint);
     font-weight: 700;
     color: #fff;
   }

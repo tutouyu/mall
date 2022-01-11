@@ -1,6 +1,6 @@
 <template>
   <div id="goodsitem" @click="goodsdetail">
-    <img :src="showimg" alt="" />
+    <img :src="showimg" alt="" @load="refresh"/>
     <div class="goodsinfo">
       <p>{{ goodsitem.title }}</p>
       <span class="price">{{goodsitem.price}}</span>
@@ -11,6 +11,7 @@
 
 <script>
 import goods from "./goods";
+import bus from "@/assets/bus.js"
 export default {
   name: "goodsitem",
   props: {
@@ -32,6 +33,9 @@ export default {
   methods:{
     goodsdetail(){
       this.$router.push('/detail/'+ this.goodsitem.iid);
+    },
+    refresh(){
+      bus.$emit("refresh");
     }
   }
 };

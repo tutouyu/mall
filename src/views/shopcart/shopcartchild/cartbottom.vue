@@ -1,6 +1,10 @@
 <template>
   <div class="bottommenue">
-    <checkbutton class="button" @click.native="selectAll" :ischecked="isSelectorAll"/>
+    <checkbutton
+      class="button"
+      @click.native="selectAll"
+      :ischecked="isSelectorAll"
+    />
     <div class="totalprice">
       <span>合计:￥</span>
       {{ total }}
@@ -15,9 +19,13 @@ import { mapGetters } from "vuex";
 import bus from "@/assets/bus.js";
 export default {
   computed: {
-    ...mapGetters(["cartList","checklen"]),
+    ...mapGetters(["cartList", "checklen"]),
     isSelectorAll() {
-      return this.cartList.find((item) => item.checked == false) == undefined;
+      if (this.cartList.length!=0) {
+        return this.cartList.find((item) => item.checked == false) == undefined;
+      } else {
+        return false;
+      }
     },
     total() {
       return this.$store.state.product
@@ -48,7 +56,6 @@ export default {
       }
     },
   },
-  
 };
 </script>
 <style>

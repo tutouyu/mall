@@ -53,6 +53,7 @@ export default {
     },
      refresh() {
       this.scroll && this.scroll.refresh()
+      console.log("refresh")
     }
   },
   mounted() {
@@ -61,6 +62,7 @@ export default {
       probeType: this.probetype,
       observeImage: this.observeImage,
        pullUpLoad: this.pullUpLoad,
+       observeDOM: true
     });
 
     if (this.probetype === 2 || this.probetype === 3) {
